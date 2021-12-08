@@ -33,7 +33,7 @@ include "../../includes/conexion.php";
                                 <td><?php echo $fila["codigo"]; ?></td>
                                 <td>
                                     <a href="<?= '../borrar.php?id=' . $fila["id_pais"] . '&tabla=' . 'paises' . '&nombre_id=' . 'id_pais'?>">🗑️Borrar</a>
-                                    <a href="<?= '../editar.php?id=' . $fila["id_pais"] . '&tabla=' . 'paises' . '&nombre_id=' . 'id_pais'?>"> ✏️Editar</a>
+                                    <a href="<?= 'editar.php?modificar='.$fila["id_pais"].'&tabla=' . 'paises' . '&nombre_id=' . 'id_pais'?>"> ✏️Editar</a>
                                 </td>
                             </tr>
                     <?php
