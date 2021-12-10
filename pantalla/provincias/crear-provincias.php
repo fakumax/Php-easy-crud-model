@@ -21,7 +21,7 @@ if (isset($_POST['submit']) || isset($_POST['actualizar'])) {
     $tabla = $_GET['tabla'];
     $nombre_id = $_GET['nombre_id'];
     $nombre_provincia = $_POST['nombre_provincia'];
-    $codigo_pais = $_POST['codigo_pais'];
+    $codigo_pais = $_POST['id_pais'];
     $sql     = "UPDATE {$tabla} SET nombre_provincia='$nombre_provincia' , id_pais=$codigo_pais WHERE {$nombre_id}= $id";
     $stmt    = $db->prepare($sql);
     $ok      = $stmt->execute();
@@ -55,23 +55,22 @@ if (isset($_POST['submit']) || isset($_POST['crear'])) {
                         <label for="nombre_provincia">Nombre Provincia</label>
                         <input type="text" name="nombre_provincia" id="nombre_provincia" class="form-control" value="<?php echo isset($_GET['modificar']) ? $nombre_provincia : ""; ?>">
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="codigo_pais">Código pais</label>
-                        <input type="text" name="codigo_pais" id="codigo_pais" class="form-control" value="<?php echo isset($_GET['modificar']) ? $codigo_pais : ""; ?>">
-                    </div> -->
                     <div class="form-group">
                         <label for="id_pais">Código pais</label>
                         <select class="form-control" name="id_pais" id="id_pais">
                             <?php
-                                $sqlSelect = "SELECT * FROM paises";
-                                $querySelect = $db->query($sqlSelect);
-                                while ($row = $querySelect->fetch()) {
-                                    echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>";
-                                }
-                               
-                            ?>
-                         </select>
-                      
+                            $sqlSelect = "SELECT * FROM paises";
+                            $querySelect = $db->query($sqlSelect);
+                            while ($row = $querySelect->fetch()) {  ?>
+                                <!-- Si apreto el boton editar cambia el valor al elegido en el select, agregando la etiqueta selected -->
+                                <option value="<?php echo $row['id_pais'] ?>" 
+                                    <?php echo isset($_GET['modificar']) && ($row['id_pais'] == $codigo_pais) ? "selected='selected'" : ""; ?>>
+                                    <?php echo $row['nombre'] ?> </option>
+
+                            <?php } ?>
+
+                        </select>
+
                     </div>
                 </div>
                 <div class="form-group">
