@@ -3,7 +3,9 @@
 
 <?php
 include "../../includes/conexion.php";
-    $sql = 'SELECT * FROM provincias ';
+    $sql = 'SELECT * FROM provincias
+            INNER JOIN paises ON paises.id_pais = provincias.id_pais';
+
     $query = $db->prepare($sql);
     $query->execute();
     $result = $query->fetchAll();
@@ -30,7 +32,7 @@ include "../../includes/conexion.php";
                             <tr>
                                 <td><?php echo $fila["id_provincia"]; ?></td>
                                 <td><?php echo $fila["nombre_provincia"]; ?></td>
-                                <td><?php echo $fila["id_pais"]; ?></td>
+                                <td><?php echo $fila["nombre"]; ?></td>
                                 <td>
                                     <a href="<?= '../borrar.php?id=' . $fila["id_provincia"] . '&tabla=' . 'provincias' . '&nombre_id=' . 'id_provincia'?>">🗑️Borrar</a>
                                     <a href="<?= 'editar.php?modificar='.$fila["id_provincia"].'&tabla=' . 'provincias' . '&nombre_id=' . 'id_provincia'?>"> ✏️Editar</a>

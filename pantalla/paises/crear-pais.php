@@ -40,7 +40,7 @@ if (isset($_POST['submit']) || isset($_POST['crear'])) {
 
     $query = $db->prepare($sql);
     $query->execute($campos);
-
+    
     header('Location: paises.php');
 }
 
