@@ -33,7 +33,7 @@ if (isset($_POST['submit']) || isset($_POST['crear'])) {
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
             <h2><?php echo isset($_GET['modificar']) ? "Modificar un rol" : "Crear un Rol"; ?></h2>
             <hr>
             <form method="post">

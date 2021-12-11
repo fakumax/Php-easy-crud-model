@@ -9,7 +9,7 @@ include "../../includes/conexion.php";
     $result = $query->fetchAll();
 ?>
 <main>
-    <div class="d-flex align-items-center vh-100">
+    <div class="d-flex align-items-center m-4">
         <?php include("crear-pais.php") ?>
       
         <div class="container ">

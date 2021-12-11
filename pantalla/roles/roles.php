@@ -9,37 +9,41 @@ include "../../includes/conexion.php";
     $result = $query->fetchAll();
 ?>
 <main>
-    <div class="d-flex align-items-center vh-100">
+    <div class="d-flex align-items-center m-4">
         <?php include("crear-rol.php") ?>
       
         <div class="container ">
-            <table id="table_id" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nombre Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if ($result && $query->rowCount() > 0) {
-                        foreach ($result as $fila) {
-                    ?>
+            
+                <div class="col-md-auto">
+                    <table id="table_id" class="table table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <td><?php echo $fila["id_rol"]; ?></td>
-                                <td><?php echo $fila["nombre_rol"]; ?></td>
-                                <td>
-                                    <a href="<?= '../borrar.php?id=' . $fila["id_rol"] . '&tabla=' . 'roles' . '&nombre_id=' . 'id_rol'?>">🗑️Borrar</a>
-                                    <a href="<?= '../editar.php?id=' . $fila["id_rol"] . '&tabla=' . 'roles' . '&nombre_id=' . 'id_rol'?>"> ✏️Editar</a>
-                                </td>
+                                <th>#</th>
+                                <th>Nombre Rol</th>
+                                <th>Acciones</th>
                             </tr>
-                    <?php
-                        }
-                    }
-                    ?>
-                <tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if ($result && $query->rowCount() > 0) {
+                                foreach ($result as $fila) {
+                            ?>
+                                    <tr>
+                                        <td><?php echo $fila["id_rol"]; ?></td>
+                                        <td><?php echo $fila["nombre_rol"]; ?></td>
+                                        <td>
+                                            <a href="<?= '../borrar.php?id=' . $fila["id_rol"] . '&tabla=' . 'roles' . '&nombre_id=' . 'id_rol'?>">🗑️Borrar</a>
+                                            <a href="<?= '../editar.php?id=' . $fila["id_rol"] . '&tabla=' . 'roles' . '&nombre_id=' . 'id_rol'?>"> ✏️Editar</a>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
+                        <tbody>
+                    </table>
+                </div>
+         
         </div>
     </div>
 </main>
